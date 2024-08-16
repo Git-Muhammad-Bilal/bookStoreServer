@@ -6,12 +6,12 @@ const Users = require('../modals/user')
 exports.savefavoriteBook = async (req, res) => {
     const user = req.user;
     const { bookId } = req.body
-   
+     console.log(user,'user');
+     
     try {
 
         let foundFavBook = await Favorites.findOne({ book: bookId })
-
-
+    
         if (foundFavBook) {
 
             const pullResult = await Favorites?.updateOne({ book: bookId }, { $pull: { users: user._id } });

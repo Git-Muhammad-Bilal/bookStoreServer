@@ -8,7 +8,7 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.json())
 app.use(express.static('profileImages'))
 // app.use(cors("http://localhost:3000"));
-app.use(cors("https://bbooksstore.netlify.app"));
+app.use(cors("https://bbookstore.netlify.app"));
 
 const profileRoutes = require('../routes/profileRoutes')
 const userRoutes = require('../routes/userRoutes')

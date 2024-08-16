@@ -6,16 +6,17 @@ exports.getBooks = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 8;
   const subject = req.query.subject || 'fiction'
+  console.log(page, 'page');
   try {
+    let { data } = await axios.get(`https://openlibrary.org/subjects/${subject}.json?limit=${Number(page) * 8}&page=${page}`)
+    res.send(data)
 
   } catch (error) {
     console.log(error.message);
     res.send(error.message)
 
   }
-  let { data } = await axios.get(`https://openlibrary.org/subjects/${subject}.json?limit=${Number(page) * 8}&page=${page}`)
   
-  res.send(data)
 }
 
 exports.getBook = async (req, res) => {
