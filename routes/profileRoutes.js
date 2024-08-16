@@ -7,7 +7,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const dirPath = path.join(__dirname, 'profileImages');
+    const dirPath = path.join(__dirname, '..profileImages');
       console.log(dirPath);
       
     cb(null, dirPath)
