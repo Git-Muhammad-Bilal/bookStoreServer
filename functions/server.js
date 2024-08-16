@@ -8,7 +8,7 @@ let cors = require('cors');
 let bodyParser = require('body-parser');
 
 app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, '../profileImages')));
+app.use(express.static( '../profileImages'));
 // app.use(express.static('profileImages'))
 // app.use(cors("http://localhost:3000"));
 app.use(cors("https://bbookstore.netlify.app"));
