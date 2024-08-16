@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { validateUser } = require('../Jwt/secureUser');
+
 const { uploadProfile, removeProfile, getProfile } = require('../controllers/profile');
 const path = require('path');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-      cb(null, '../profileImages')
+      cb(null, 'profileImages')
  },
  filename: function (req, file, cb) {
     cb(null, req.user._id + file.originalname)
