@@ -2,11 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const serverless = require("serverless-http");
 const app = express();
+const path = require('path');
 require('dotenv').config()
 let cors = require('cors');
 let bodyParser = require('body-parser');
+
 app.use(bodyParser.json())
-app.use(express.static('profileImages'))
+app.use(express.static(path.join(__dirname, '../profileImages')));
+// app.use(express.static('profileImages'))
 // app.use(cors("http://localhost:3000"));
 app.use(cors("https://bbookstore.netlify.app"));
 
@@ -27,9 +30,7 @@ app.use(favoriteBooksRoutes)
 
 mongoose.connect(process.env.DATABASE_URI).then((result) => {
   console.log('connected');
-  // app.listen(3001, (err) => {
-  //   console.log('listning on port 3001');
-  // })
+ 
 }).catch(err => {
   console.log(err);
 })

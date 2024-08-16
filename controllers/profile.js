@@ -17,7 +17,10 @@ exports.getProfile = async (req, res, next) => {
 exports.uploadProfile = async (req, res) => {
 
   try {
-    await Users.updateOne({ _id: req.user._id }, { $set: { 'profile': req.file?.filename } })
+    console.log(req.user, 'user');
+    
+    let users = await Users.updateOne({ _id: req.user._id }, { $set: { 'profile': req.file?.filename } })
+    console.log(users, 'userssssssss');
     res.send(req?.file)
   } catch (error) {
     res.send(error.message)
