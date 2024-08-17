@@ -8,7 +8,7 @@ const fs = require('fs');
 
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
-      const dirPath = path.join(__dirname, '../public/images');
+      const dirPath = path.join(__dirname, '../images');
       console.log(dirPath, 'workingggggggggggggggg');
       console.log(req.body, 'bodydd');
       console.log(file, 'fileeeeeee');
