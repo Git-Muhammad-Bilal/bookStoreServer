@@ -34,7 +34,7 @@ exports.removeProfile = async (req, res) => {
 
   try {
     await Users.updateOne({ _id: user._id }, { $set: { 'profile': '' } })
-    fs.unlink(dirPath + '/' + fileName, (err) => {
+    fs.unlink(`${dirPath}/ ${fileName}`, (err) => {
       if (err) {
         throw err;
       }
