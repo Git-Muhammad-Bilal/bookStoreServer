@@ -1,6 +1,6 @@
 const Users = require('../modals/user')
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
 
 exports.getProfile = async (req, res, next) => {
   try {
