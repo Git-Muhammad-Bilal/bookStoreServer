@@ -6,18 +6,17 @@ const path = require('path');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const dirPath = path.join(__dirname, '../profileImages');
-      console.log(dirPath);
+   destination: function (req, file, cb) {
+      const dirPath = path.join(__dirname, './../public/images');
       
-    cb(null, dirPath)
- },
- filename: function (req, file, cb) {
-    cb(null, req.user._id + file.originalname)
- }
+      cb(null, dirPath)
+   },
+   filename: function (req, file, cb) {
+      cb(null, req.user._id + `${file.originalname}`)
+   }
 })
 
-const upload = multer({ storage: storage})
+const upload = multer({ storage: storage })
 
 
 router.post('/uploadProfile', validateUser, upload.single('profile'), uploadProfile)

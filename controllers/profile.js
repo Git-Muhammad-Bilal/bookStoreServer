@@ -4,11 +4,12 @@ const path = require('path');
 
 exports.getProfile = async (req, res, next) => {
   try {
-    
     let user = await Users.findOne({ _id: req.user._id })
-
-    res.send(user.profile)
+    const { name, lastName, email, profile } = user;
     
+    res.send({  name, lastName, email , profile})
+
+
   } catch (error) {
     res.send(error.message)
   }
@@ -17,20 +18,19 @@ exports.getProfile = async (req, res, next) => {
 exports.uploadProfile = async (req, res) => {
 
   try {
-    console.log(req.user, 'user');
-    
-    let users = await Users.updateOne({ _id: req.user._id }, { $set: { 'profile': req.file?.filename } })
-    console.log(users, 'userssssssss');
-    res.send(req?.file)
+
+    let user = await Users.findOneAndUpdate({ _id: req.user._id }, { $set: { 'profile': req.file?.filename } })
+    res.send(req?.file?.filename)
+  
   } catch (error) {
     res.send(error.message)
   }
-  
+
 }
 exports.removeProfile = async (req, res) => {
   const user = req.user;
   const fileName = req.body.profile
-  const dirPath = path.join(__dirname, '../profileImages');
+  const dirPath = path.join(__dirname, '../public/images');
 
   try {
     await Users.updateOne({ _id: user._id }, { $set: { 'profile': '' } })

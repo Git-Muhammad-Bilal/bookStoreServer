@@ -7,10 +7,12 @@ require('dotenv').config()
 let cors = require('cors');
 let bodyParser = require('body-parser');
 
+const dirPath = path.join(__dirname, './../public/images');
+
 app.use(bodyParser.json())
-app.use(express.static( '../profileImages'));
-// app.use(express.static('profileImages'))
+app.use('/public/images' , express.static(dirPath));
 app.use(cors("http://localhost:3000"));
+
 // app.use(cors("https://bbookstore.netlify.app"));
 
 const profileRoutes = require('../routes/profileRoutes')
@@ -30,7 +32,10 @@ app.use(favoriteBooksRoutes)
 
 mongoose.connect(process.env.DATABASE_URI).then((result) => {
   console.log('connected');
- 
+//  app.listen(3001,()=>{
+//   console.log('listining on port 3001');
+  
+//  })
 }).catch(err => {
   console.log(err);
 })
