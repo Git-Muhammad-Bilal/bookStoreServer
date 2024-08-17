@@ -31,7 +31,7 @@ exports.uploadProfile = async (req, res) => {
 exports.removeProfile = async (req, res) => {
   const user = req.user;
   const fileName = req.body.profile
-  const dirPath = path.join(__dirname, '../public/images');
+  const dirPath = path.join(__dirname, '../images');
   console.log(dirPath,'pathremove');
   
   try {
