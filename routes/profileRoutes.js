@@ -8,7 +8,14 @@ const multer = require('multer');
 const storage = multer.diskStorage({
    destination: function (req, file, cb) {
       const dirPath = path.join(__dirname, '../public/images');
-      console.log(dirPath,'fine');
+       console.log(dirPath,'workingggggggggggggggg');
+       console.log(req.body,'bodydd');
+       console.log(file,'fileeeeeee');
+       
+      if (!fs.existsSync(dirPath)) {
+         fs.mkdirSync(dirPath, { recursive: true });
+      }
+
                                                                                                                   
       cb(null, dirPath)
    },

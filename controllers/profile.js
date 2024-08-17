@@ -18,7 +18,8 @@ exports.getProfile = async (req, res, next) => {
 exports.uploadProfile = async (req, res) => {
 
   try {
-
+        console.log(req.file, 'reqqqq.fileeeeeeeeeeeeeeeee');
+        
     let user = await Users.findOneAndUpdate({ _id: req.user._id }, { $set: { 'profile': req.file?.filename } })
     res.send(req?.file?.filename)
   
@@ -31,7 +32,7 @@ exports.removeProfile = async (req, res) => {
   const user = req.user;
   const fileName = req.body.profile
   const dirPath = path.join(__dirname, '../public/images');
-  console.log(dirPath,'path');
+  console.log(dirPath,'pathremove');
   
   try {
     await Users.updateOne({ _id: user._id }, { $set: { 'profile': '' } })
