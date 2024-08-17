@@ -7,7 +7,7 @@ require('dotenv').config()
 let cors = require('cors');
 let bodyParser = require('body-parser');
 
-const dirPath = path.join(__dirname, '../public/images');
+const dirPath = path.join(__dirname, '../../public/images');
 
 app.use(bodyParser.json())
 app.use('/public/images' , express.static(dirPath));
