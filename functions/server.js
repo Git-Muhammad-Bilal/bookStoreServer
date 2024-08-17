@@ -10,7 +10,7 @@ let bodyParser = require('body-parser');
 const dirPath = path.join(__dirname, '../public/images');
 
 app.use(bodyParser.json())
-app.use('/public/images' , express.static(dirPath));
+app.use('/images' , express.static(dirPath));
 app.use(cors("http://localhost:3000"));
 
 // app.use(cors("https://bbookstore.netlify.app"));
