@@ -22,11 +22,11 @@ const purchasesRoutes = require('../routes/purhcasesRoutes')
 const favoriteBooksRoutes = require('../routes/favoriteRoutes')
 
 
-app.use(profileRoutes)
-app.use(userRoutes)
-app.use(booksRoutes)
-app.use(purchasesRoutes)
-app.use(favoriteBooksRoutes)
+app.use('/api/',profileRoutes)
+app.use('/api/',userRoutes)
+app.use('/api/',booksRoutes)
+app.use('/api/',purchasesRoutes)
+app.use('/api/',favoriteBooksRoutes)
 
 
 
